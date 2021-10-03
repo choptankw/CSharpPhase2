@@ -1,0 +1,39 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Queue
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> MyQ = new Queue<string>();
+            MyQ.Enqueue("One,");
+            MyQ.Enqueue("Two,");
+            MyQ.Enqueue("Three,");
+            MyQ.Enqueue("Four");
+
+            DeleteThirdItemQueue(ref MyQ);
+            PrintQueue(MyQ);
+        }
+
+        static void DeleteThirdItemQueue<T>(ref Queue<T> queue)
+        {
+            T a1 = queue.Dequeue();
+            T a2 = queue.Dequeue();
+            queue.Dequeue();
+            queue.Prepend(a2);
+            queue.Prepend(a1);
+   
+        }
+
+        static void PrintQueue<T>(Queue<T> queue)
+        {
+            foreach(T item in queue)
+            {
+                Console.WriteLine($" {item}");
+            }
+        }
+    }
+}

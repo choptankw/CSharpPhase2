@@ -1,0 +1,51 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Stack
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> stack = new Stack<int>();
+            stack.Push(5);
+            stack.Push(10);
+            stack.Push(15);
+            Stack<int> stack2 = new Stack<int>();
+            stack2.Push(20);
+            stack2.Push(25);
+            stack2.Push(30);
+
+            PrintStack(MergeTwoStacks(stack, stack2));
+        }
+
+        static Stack<T> MergeTwoStacks<T>(Stack<T> stack1, Stack<T> stack2)
+        {
+            Stack<T> stack = new Stack<T>();
+            T[] array = new T[stack1.Count];
+            T[] array2 = new T[stack2.Count];
+            stack1.CopyTo(array, 0); array.Reverse();
+            stack2.CopyTo(array2, 0); array2.Reverse();
+
+            foreach(var item in array2)
+            {
+                stack.Push(item);
+            }
+            foreach(var item in array)
+            {
+                stack.Push(item);
+            }
+
+            return stack;
+        }
+
+        static void PrintStack<T>(Stack<T> stack)
+        {
+            foreach(object item in stack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}

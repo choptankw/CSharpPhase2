@@ -1,0 +1,48 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Queue
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> MyQ = new Queue<string>();
+            MyQ.Enqueue("One,");
+            MyQ.Enqueue("Two,");
+            MyQ.Enqueue("Three,");
+            MyQ.Enqueue("Four");
+            Queue<string> MyQ2 = new Queue<string>();
+            MyQ2.Enqueue("Five,");
+            MyQ2.Enqueue("Six,");
+            MyQ2.Enqueue("Seven");
+;
+            PrintQueue(MergeTwoQueues(MyQ, MyQ2));
+        }
+
+        static Queue<T> MergeTwoQueues<T>(Queue<T> queue1, Queue<T> queue2)
+        {
+            Queue<T> queue = new Queue<T>();
+
+            foreach(T item in queue1)
+            {
+                queue.Enqueue(item);
+            }
+            foreach(T item in queue2)
+            {
+                queue.Enqueue(item);
+            }
+
+            return queue;
+        }
+
+        static void PrintQueue<T>(Queue<T> queue)
+        {
+            foreach(T item in queue)
+            {
+                Console.WriteLine($" {item}");
+            }
+        }
+    }
+}

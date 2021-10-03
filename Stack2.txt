@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Stack
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> stack = new Stack<int>();
+            stack.Push(5);
+            stack.Push(10);
+            stack.Push(15);
+            stack.Push(20);
+            stack.Push(25);
+
+            AddItemToBottomStack(ref stack, 30);
+            PrintStack(stack);
+        }
+
+        static void AddItemToBottomStack<T>(ref Stack<T> stack, T element)
+        {
+            T[] array = new T[stack.Count];
+            stack.CopyTo(array, 0);
+            array.Reverse();
+            stack.Clear();
+            stack.Push(element);
+
+            foreach(T item in array)
+            {
+                stack.Push(item);
+            }
+        }
+        static void PrintStack<T>(Stack<T> stack)
+        {
+            foreach(object item in stack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}

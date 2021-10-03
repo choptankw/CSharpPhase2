@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+
+namespace List
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> List = new List<int>(4);
+            List.Add(5);
+            List.Add(10);
+            List.Add(15);
+            List.Add(20);
+            List<int> List2 = new List<int>(2);
+            List2.Add(100);
+            List2.Add(200);
+
+            ReturnList(MergTwoLists(List, List2));
+        }
+
+        static List<T> MergTwoLists<T>(List<T> list1, List<T> list2)
+        {
+            List<T> NewList = new List<T>(list1.Count + list2.Count);
+
+            foreach(T element in list1)
+            {
+                NewList.Add(element);
+            }
+            foreach(T element in list2)
+            {
+                NewList.Add(element);
+            }
+
+            return NewList;
+        }
+
+        static void ReturnList<T>(List<T> list)
+        {
+            Console.WriteLine();
+
+            foreach (T element in list)
+            {
+                Console.Write($" {element}");
+            }
+        }
+    }
+}

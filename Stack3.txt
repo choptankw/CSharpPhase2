@@ -1,0 +1,28 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Stack
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> stack = new Stack<int>();
+            stack.Push(5);
+            stack.Push(10);
+            stack.Push(15);
+            stack.Push(20);
+            stack.Push(25);
+
+            Console.WriteLine(ReturnItemByIndexStack(stack, 2));
+        }
+
+        static T ReturnItemByIndexStack<T>(Stack<T> stack, int index)
+        {
+            T[] array = new T[stack.Count];
+            stack.CopyTo(array, 0);
+            return array[index];
+        }
+    }
+}

@@ -1,0 +1,29 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Queue
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> MyQ = new Queue<string>();
+            MyQ.Enqueue("One,");
+            MyQ.Enqueue("Two,");
+            MyQ.Enqueue("Three,");
+            MyQ.Enqueue("Four");
+
+            var A =ReturnItemByIndexQueue(MyQ, 2);
+            Console.WriteLine(A);
+        }
+
+        static T ReturnItemByIndexQueue<T>(Queue<T> queue, int index)
+        {
+            T[] array = new T[queue.Count];
+            queue.CopyTo(array, 0);
+
+            return array[index];
+        }
+    }
+}

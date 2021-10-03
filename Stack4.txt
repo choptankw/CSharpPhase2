@@ -1,0 +1,50 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Stack
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> stack = new Stack<int>();
+            stack.Push(5);
+            stack.Push(10);
+            stack.Push(15);
+            stack.Push(20);
+            stack.Push(25);
+
+            DeleteThirdItemStack(ref stack);
+            PrintStack(stack);
+        }
+
+        static void DeleteThirdItemStack<T>(ref Stack<T> stack)
+        {
+            T[] array = new T[stack.Count];
+            stack.CopyTo(array, 0);
+            T[] array1 = new T[stack.Count - 1];
+            for (int i = 0; i < stack.Count - 1; i++)
+            {
+                if (i < 2)
+                    array1[i] = array[i];
+                else
+                    array1[i] = array[i + 1];
+            }
+            stack.Clear();
+            array1.Reverse();
+            foreach(var item in array1)
+            {
+                stack.Push(item);
+            }
+        }
+
+        static void PrintStack<T>(Stack<T> stack)
+        {
+            foreach(object item in stack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}

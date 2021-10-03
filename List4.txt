@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+namespace List
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> List = new List<int>(4);
+
+            List.Add(5);
+            List.Add(10);
+            List.Add(15);
+            List.Add(20);
+
+            ReturnIndexItem(ref List);
+            ReturnList(List);
+        }
+
+        static void ReturnIndexItem<T>(ref List<T> list)
+        {
+            T element = list[2];
+            list.Remove(element);
+        }
+
+        static void ReturnList<T>(List<T> list)
+        {
+            Console.WriteLine();
+
+            foreach (T element in list)
+            {
+                Console.Write($" {element}");
+            }
+        }
+    }
+}

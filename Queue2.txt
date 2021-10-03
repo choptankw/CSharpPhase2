@@ -1,0 +1,42 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Queue
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<string> MyQ = new Queue<string>();
+            MyQ.Enqueue("One,");
+            MyQ.Enqueue("Two,");
+            MyQ.Enqueue("Three,");
+            MyQ.Enqueue("Four");
+
+            AddToQueue(ref MyQ, "Zero");
+            PrintQueue(MyQ);
+        }
+
+        static void AddToQueue<T>(ref Queue<T> queue, T item)
+        {
+            T[] array = new T[queue.Count];
+            queue.CopyTo(array, 0);
+            queue.Clear();
+            queue.Enqueue(item);
+            
+            foreach(T element in array)
+            {
+                queue.Enqueue(element);
+            }
+        }
+
+        static void PrintQueue<T>(Queue<T> queue)
+        {
+            foreach(T item in queue)
+            {
+                Console.WriteLine($" {item}");
+            }
+        }
+    }
+}

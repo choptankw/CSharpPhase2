@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+namespace List
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> List = new List<int>(4);
+
+            List.Add(5);
+            List.Add(10);
+            List.Add(15);
+            List.Add(20);
+
+            ReturnList(AddFirstList(List, 1));
+        }
+
+        static List<T> AddFirstList<T>(List<T> list, T element)
+        {
+            List<T> newList = new List<T>(list.Capacity + 1);
+            newList.Add(element);
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                newList.Add(list[i]);
+            }
+
+            return newList;
+        }
+
+        static void ReturnList<T>(List<T> list)
+        {
+            Console.WriteLine();
+
+            foreach(T element in list)
+            {
+                Console.Write($" {element}");
+            }
+        }
+    }
+}

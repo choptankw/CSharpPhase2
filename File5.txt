@@ -1,0 +1,19 @@
+using System;
+using System.IO;
+
+namespace Fly
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] arr = { "line1", "Line2", "line3" };
+            AppendLinesToTXT(arr);
+        }
+
+        static void AppendLinesToTXT(string[] array)
+        {
+            File.AppendAllLines("D:\\text1.txt", array);
+        }
+    }
+}

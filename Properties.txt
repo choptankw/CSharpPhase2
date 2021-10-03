@@ -1,0 +1,27 @@
+using System;
+using System.Reflection;
+
+namespace DelegateEvents
+{
+    class Dog
+    {
+        public bool Bark { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PrintPropertiesNames(typeof(Dog));
+        }
+
+        public static void PrintPropertiesNames(Type type)
+        {
+            var properties = type.GetProperties();
+
+            foreach (var item in properties)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
+    }
+}

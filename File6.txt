@@ -1,0 +1,29 @@
+using System;
+using System.IO;
+
+namespace Fly
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            File.WriteAllText("D:\\name1.txt", "This is file name1.txt");
+            File.WriteAllText("D:\\name2.txt", "This is file name2.txt");
+
+            WriteLinesInFileReversed();
+        }
+
+        static void WriteLinesInFileReversed()
+        {
+            string tmp = File.ReadAllText("D:\\name1.txt");
+            string text = string.Empty;
+            
+            for (int i = tmp.Length - 1; i >= 0; i--)
+            {
+                text += tmp[i];
+            }
+
+            File.WriteAllText("D:\\name2.txt", text);
+        }
+    }
+}

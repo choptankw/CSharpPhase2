@@ -1,0 +1,13 @@
+using System;
+using System.IO;
+
+namespace Fly
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            File.WriteAllText("D:\\file1.txt", "I can work with files");
+        }
+    }
+}

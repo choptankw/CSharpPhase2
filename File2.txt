@@ -1,0 +1,26 @@
+using System;
+using System.IO;
+
+namespace Fly
+{
+    class Program
+    {
+        
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                Console.WriteLine(File.ReadAllText("D:\\file1.txt"));
+            }
+            catch(DirectoryNotFoundException)
+            {
+                Console.WriteLine("Wrong adress path");
+            }
+            catch(FileNotFoundException)
+            {
+                Console.WriteLine("File you looking for not found");
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+using System;
+using System.IO;
+using System.Linq;
+
+namespace Fly
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            File.WriteAllText("D:\\name1.txt", "This is file name1.txt");
+            File.WriteAllText("D:\\name2.txt", "This is file name2.txt");
+
+            WriteFirstNwords(int.parse(Console.ReadLine()));
+        }
+
+        static void WriteFirstNwords(int n)
+        {
+            string tmp = File.ReadAllText("D:\\name1.txt");
+            string text = string.Empty;
+            int count = 0;
+            
+            for (int i = 0; i < tmp.Length; i++)
+            {
+                if (tmp[i] == ' ')
+                {
+                    count++;
+                }
+                if (count >= n)
+                    break;
+
+                text += tmp[i];
+            }
+
+            File.WriteAllText("D:\\name2.txt", text);
+        }
+    }
+}

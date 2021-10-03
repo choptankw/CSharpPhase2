@@ -1,0 +1,20 @@
+using System;
+using System.IO;
+
+namespace Fly
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            File.WriteAllText("D:\\name1.txt", "This is file name1.txt");
+            File.WriteAllText("D:\\name2.txt", "This is file name2.txt");
+        }
+
+        static void WriteLinesInFile()
+        {
+            string text1 = File.ReadAllText("D:\\name1.txt");
+            File.WriteAllText("D:\\name2.txt", text1);
+        }
+    }
+}

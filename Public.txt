@@ -1,0 +1,26 @@
+using System;
+using System.Reflection;
+
+namespace DelegateEvents
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(GetPublicMemberCount(typeof(int)));
+        }
+
+        public static int GetPublicMemberCount(Type type)
+        {
+            var properties = type.GetMembers();
+            int count = 0;
+
+            foreach (var item in properties)
+            {
+                count++;
+            }
+
+            return count;
+        }
+    }
+}

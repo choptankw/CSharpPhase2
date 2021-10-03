@@ -1,0 +1,29 @@
+using System;
+using System.Reflection;
+
+namespace DelegateEvents
+{
+    class Dog
+    {
+        public bool Bark;
+        public bool Run;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PrintFieldsNames(typeof(Dog));
+            PrintFieldsNames(typeof(int));
+        }
+
+        public static void PrintFieldsNames(Type type)
+        {
+            var properties = type.GetFields();
+
+            foreach (var item in properties)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+using System;
+using System.Reflection;
+
+namespace DelegateEvents
+{  
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Type t = typeof(String);
+        }
+
+        public static void ObjCreate(Type type)
+        {
+            ConstructorInfo cInfo = null;
+
+            foreach (ConstructorInfo info in type.GetConstructors())
+            {
+                if (info.IsPublic && info.GetParameters().Length == 0)
+                {
+                    cInfo = info;
+                    break;
+                }
+            }
+
+            object newObject = null;
+
+            if (cInfo == null)
+            {
+                Console.WriteLine("No default constructor");
+            }
+            else
+            {
+                newObject = cInfo.Invoke(new object[] { "this is a string array".ToCharArray() });
+            }
+        }
+    }
+}

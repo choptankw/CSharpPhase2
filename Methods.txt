@@ -1,0 +1,23 @@
+using System;
+using System.Reflection;
+
+namespace DelegateEvents
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PrintMethodNames(typeof(int));
+        }
+
+        public static void PrintMethodNames(Type type)
+        {
+            var properties = type.GetMethods();
+
+            foreach (var item in properties)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
+    }
+}
